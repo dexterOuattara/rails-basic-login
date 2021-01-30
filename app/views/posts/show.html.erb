@@ -6,14 +6,16 @@
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @post.description %>
-</p>
-
-<p>
   <strong>Image:</strong> <br>
   <%= image_tag(@post.image, size: "500x500") %>
 </p>
+
+<p>
+  <strong>Description:</strong>
+  <%= sanitize @post.description, :length => 100  %>
+</p>
+
+
 
 <p>
   <strong>User:</strong>

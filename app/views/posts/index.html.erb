@@ -20,12 +20,11 @@
       <tr>
         <td><%= post.id %></td>
         <td><%= post.title %></td>
-        <td><%= post.description %></td>
+
+        <td><%= sanitize post.description, :length => 100  %></td>
         <td><%= post.user.name %></td>
         <td><button type="button" class="btn btn-primary"><%= post.category.tag %></button></td>
         <td><%= image_tag(post.image, size: "50x50") %></td>
-
-
 
 
         <% if current_user %>
