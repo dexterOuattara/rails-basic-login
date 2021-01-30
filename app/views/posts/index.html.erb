@@ -24,9 +24,19 @@
         <td><%= post.user.name %></td>
         <td><button type="button" class="btn btn-primary"><%= post.category.tag %></button></td>
         <td><%= image_tag(post.image, size: "50x50") %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+
+
+
+        <% if current_user %>
+          <td><%= link_to 'Edit', edit_post_path(post) %></td>
+          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% else %>
+          <td><%= link_to 'Show', post %></td>
+
+        <% end %>
+
+
       </tr>
     <% end %>
   </tbody>
