@@ -31,10 +31,34 @@
     <%= form.text_field :user_id %>
   </div>
 
+<!--  <div class="field">-->
+    <%#= form.label :category_id %>
+    <%#= form.text_field :category_id %>
+<!--  </div>-->
+
+<!--  <div class="field">-->
+<!--    <select name="category_id" id="cars">-->
+
+    <%# @categories.each do |category| %>
+<!--        <option value="<%#= category.tag %>"><%#= category.tag %></option>-->
+    <%# end %>
+<!--    </select>-->
+<!--  </div>-->
+
   <div class="field">
     <%= form.label :category_id %>
-    <%= form.text_field :category_id %>
+
+
+    <div class="field">
+      <select name="post[category_id]" id="category_id">
+        <% @categories.each do |category| %>
+          <option value="<%= category.id %>"><%= category.tag %></option>
+        <% end %>
+      </select>
+
+    </div>
   </div>
+
 
   <div class="actions">
     <%= form.submit %>

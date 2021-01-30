@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :categories
+  resources :posts
   # get 'pages/home'
 
   root to: 'pages#home'

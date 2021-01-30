@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Title</th>
       <th>Description</th>
       <th>User</th>
@@ -17,10 +18,11 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
+        <td><%= post.id %></td>
         <td><%= post.title %></td>
         <td><%= post.description %></td>
         <td><%= post.user.name %></td>
-        <td><%= post.category.tag %></td>
+        <td><button type="button" class="btn btn-primary"><%= post.category.tag %></button></td>
         <td><%= image_tag(post.image, size: "50x50") %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
