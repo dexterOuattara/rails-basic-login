@@ -4,28 +4,20 @@
   <div class="row">
 
     <!-- Post Content Column -->
-    <div class="col-lg-8">
+    <div class="col-md-8">
 
       <!-- Title -->
       <h1 class="mt-4"><%= @post.title %></h1>
 
-      <!-- Author -->
-      <p class="lead">
-        by
-        <a href="#">
-          <strong class="d-inline-block mb-2 text-white btn btn-primary"><%= @post.category.tag %></strong></h2>
-        </a>
-      </p>
-
-      <hr>
-
-      <!-- Date/Time -->
-      <p>Posted on <%= @post.created_at.to_s(:short) %></p>
-
       <hr>
 
       <!-- Preview Image -->
-      <%= link_to image_tag(@post.image,  alt: "Edit Entry", class:"card-img-top" ) , @post %>
+      <%= image_tag(@post.image,  alt: "Edit Entry", class:"card-img-top" )%>
+
+      <div class="card-footer text-muted">
+        <%= @post.created_at.to_s(:short) %>
+        <%= @post.user.surname %> By <%= @post.user.name %>
+      </div>
 
       <hr>
 
@@ -38,36 +30,49 @@
 
     </div>
 
+    <div class="col-md-4">
+      <br> <br>
+      <br> <br>
+      <br> <br>
+      <div class="row">
+        <% @posts.each do |post| %>
+
+          <div class="col-md-12">
+            <div class="card">
+              <%= link_to image_tag(post.image,  alt: "Edit Entry", class:"card-img-top", size: "300x200" ) , post %>
+
+              <div class="card-body">
+
+                <p class="card-text">
+                  <%= post.category.tag %>
+                  <br>
+                  <%= post.title %>
+                </p>
+              </div>
+              <div class="card-footer text-black">
+                <%= post.user.surname %> <%= post.user.name %>
+                <%= post.created_at.to_s(:short) %>
+                <% if current_user %>
+                  <td><%= link_to 'Edit', edit_post_path(post) %></td>
+                  <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% else %>
+                  <td><%= link_to 'Show', post %></td>
+
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+        <% end %>
+
+      </div>
+    </div>
 
 
-<!--<p>-->
-<!--  <strong>Title:</strong>-->
-  <%#= @post.title %>
-<!--</p>-->
-
-<!--<p>-->
-<!--  <strong>Image:</strong> <br>-->
-  <%#= image_tag(@post.image, size: "500x500") %>
-<!--</p>-->
-
-<!--<p>-->
-<!--  <strong>Description:</strong>-->
-  <%#= sanitize @post.description, :length => 100  %>
-<!--</p>-->
 
 
 
-<p>
-  <strong>User:</strong>
-  <%= @post.user_id %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @post.category_id %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
+    <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
   </div>
 </div>
