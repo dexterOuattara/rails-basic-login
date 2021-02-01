@@ -14,9 +14,17 @@
       <!-- Preview Image -->
       <%= image_tag(@post.image,  alt: "Edit Entry", class:"card-img-top" )%>
 
-      <div class="card-footer text-muted">
+      <div class="card-footer text-black">
+        <%= @post.user.surname %> <%= @post.user.name %>
         <%= @post.created_at.to_s(:short) %>
-        <%= @post.user.surname %> By <%= @post.user.name %>
+        <button type="button" class="btn btn-primary"><%= @post.category.tag %></button>
+        <% if current_user %>
+          <td><%= link_to 'Edit', edit_post_path(@post) %></td>
+          <td><%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% else %>
+          <td><%= link_to 'Show', post %></td>
+
+        <% end %>
       </div>
 
       <hr>
