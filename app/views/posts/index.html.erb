@@ -5,7 +5,7 @@
 <div class="container">
   <div class="row align-items-start">
 
-    <div class="col-md-8">
+    <div class="col-md-10">
       <div class="row">
         <% @posts.each do |post| %>
 
@@ -22,7 +22,8 @@
               </p>
             </div>
             <div class="card-footer text-black">
-              <%= post.user.surname %> <%= post.user.name %>
+
+            <strong> <%= post.user.surname %> <%= post.user.name %>
               <%= post.created_at.to_s(:short) %>
               <% if current_user %>
                 <td><%= link_to 'Edit', edit_post_path(post) %></td>
@@ -31,6 +32,8 @@
                 <td><%= link_to 'Show', post %></td>
 
               <% end %>
+            </strong>
+
             </div>
           </div>
         </div>
@@ -40,38 +43,9 @@
       </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-2">
       <div class="row">
-        <% @posts.each do |post| %>
-
-          <div class="col-md-12">
-            <div class="card">
-              <%= link_to image_tag(post.image,  alt: "Edit Entry", class:"card-img-top", size: "300x200" ) , post %>
-
-              <div class="card-body">
-
-                <p class="card-text">
-                  <%= post.category.tag %>
-                  <br>
-                  <%= post.title %>
-                </p>
-              </div>
-              <div class="card-footer text-black">
-                <%= post.user.surname %> <%= post.user.name %>
-                <%= post.created_at.to_s(:short) %>
-                <% if current_user %>
-                  <td><%= link_to 'Edit', edit_post_path(post) %></td>
-                  <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                <% else %>
-                  <td><%= link_to 'Show', post %></td>
-
-                <% end %>
-              </div>
-            </div>
-          </div>
-
-        <% end %>
-
+        SEARCH
       </div>
     </div>
   </div>
