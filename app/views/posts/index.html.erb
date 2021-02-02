@@ -46,6 +46,12 @@
     <div class="col-md-2">
       <div class="row">
         SEARCH
+
+        <%= search_form_for @q do |f| %>
+
+          <%= f.search_field :title_cont %>
+          <%= f.submit %>
+          <% end %>
       </div>
     </div>
   </div>
