@@ -44,13 +44,7 @@
     </div>
 
     <div class="col-md-2">
-      <div class="row">
-        <%= search_form_for @q do |f| %>
-
-          <%= f.search_field :title_cont , class:'form-control' %> <br>
-          <%= f.submit "SEARCH" , class:"btn btn-primary" %>
-          <% end %>
-      </div>
+      <%= render 'layouts/search' %>
     </div>
   </div>
 </div>

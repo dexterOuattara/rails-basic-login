@@ -15,6 +15,8 @@ class PostsController < ApplicationController
   def show
     @posts = Post.all
 
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true)
   end
 
   # GET /posts/new
