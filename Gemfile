@@ -25,6 +25,9 @@ gem 'jbuilder', '~> 2.7'
 # add devices
 gem 'devise'
 
+# add social media link
+gem 'shareable'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
