@@ -4,10 +4,21 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
+    @categories = Category.all
+
     @posts = Post.all
 
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true)
+
+
+    cate = params[:cate]
+
+    if !cate.nil?
+      @posts = Post.where(:category_id => cate)
+    else
+
+      @posts = @q.result(distinct: true)    end
+
 
   end
 
