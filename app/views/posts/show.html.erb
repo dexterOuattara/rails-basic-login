@@ -16,7 +16,7 @@
       <div class="card-footer text-black">
         <%= @post.user.surname %> <%= @post.user.name %>
         <%= @post.created_at.to_s(:short) %>
-        <button type="button" class="btn btn-primary"><%= @post.category.tag %></button>
+        <strong class="text-primary"><%= @post.category.tag %></strong>
         <%= render_shareable :static_link => true %>
 
         <% if current_user %>
