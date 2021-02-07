@@ -17,7 +17,9 @@ class PostsController < ApplicationController
       @posts = Post.where(:category_id => cate)
     else
 
-      @posts = @q.result(distinct: true)    end
+      @posts = @q.result(distinct: true)
+
+    end
 
 
   end

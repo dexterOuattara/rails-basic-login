@@ -59,7 +59,7 @@
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <%= link_to category.tag, posts_path(:cate => category.id) %>
 
-              <span class="badge badge-primary badge-pill"><%= category.posts.count %></span>
+              <span class="badge badge-primary badge-pill text-primary"><%= category.posts.count %></span>
             </li>
           <% end %>
 
