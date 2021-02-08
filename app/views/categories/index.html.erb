@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
-
+<br>
 <h1>Categories</h1>
-
+<% if @categories.any? %>
 <table>
   <thead>
     <tr>
@@ -23,6 +23,9 @@
     <% end %>
   </tbody>
 </table>
+<% else %>
+  <p>There are no cateogries!</p>
+<% end %>
 
 <br>
 
