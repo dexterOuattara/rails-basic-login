@@ -5,4 +5,8 @@ class PagesController < ApplicationController
   def casestudies
 
   end
+
+  def interviewpreparation
+
+  end
 end

@@ -59,3 +59,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "ransack", "~> 2.4"
+
+#Custom URL SEO PAGES
+
+gem 'friendly_id', '~> 5.4.0'

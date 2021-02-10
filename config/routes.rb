@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :categories
   resources :posts
-  # get 'pages/home'
+  get 'pages/casestudies'
+
+  get 'pages/interviewpreparation'
 
   root to: 'pages#home'
 
