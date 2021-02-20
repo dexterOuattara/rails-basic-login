@@ -1,27 +1,27 @@
 
 <h3>LATEST ARTICLE</h3>
 <div class="row">
-  <% if @casestudies.any? %>
+  <% if @posts.any? %>
 
-    <% @casestudies.each do |casestudy| %>
+    <% @posts.each do |post| %>
       <div class="col-md-12">
         <div class="card">
-          <%= link_to image_tag(casestudy.image,  alt: "Edit Entry", class:"card-img-top", size: "300x200" ) , casestudy %>
+          <%= link_to image_tag(post.image,  alt: "Edit Entry", class:"card-img-top", size: "300x200" ) , post %>
           <div class="card-body">
             <p class="card-text">
-              <%= casestudy.category.tag %>
+              <%= post.category.tag %>
               <br>
-              <%= casestudy.title %>
+              <%= post.title %>
             </p>
           </div>
           <div class="card-footer text-black">
-            <%= casestudy.user.surname %> <%= casestudy.user.name %>
-            <%= casestudy.created_at.to_s(:short) %>
+            <%= post.user.surname %> <%= post.user.name %>
+            <%= post.created_at.to_s(:short) %>
             <% if current_user %>
-              <td><%= link_to 'Edit', edit_casestudy_path(casestudy) %></td>
-              <td><%= link_to 'Destroy', casestudy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'Edit', edit_post_path(post) %></td>
+              <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% else %>
-              <td><%= link_to 'Show', casestudy %></td>
+              <td><%= link_to 'Show', post %></td>
             <% end %>
           </div>
         </div>
