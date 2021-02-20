@@ -1,29 +1,49 @@
-<p id="notice"><%= notice %></p>
+<!-- Page Content -->
+<div class="container">
 
-<p>
-  <strong>Title:</strong>
-  <%= @casestudy.title %>
-</p>
+  <div class="row">
 
-<p>
-  <strong>Description:</strong>
-  <%= @casestudy.description %>
-</p>
+    <!-- Post Content Column -->
+    <div class="col-md-9">
 
-<p>
-  <strong>Slug:</strong>
-  <%= @casestudy.slug %>
-</p>
+      <!-- Title -->
+      <h1 class="mt-4"><%= @casestudy.title %></h1>
 
-<p>
-  <strong>User:</strong>
-  <%= @casestudy.user_id %>
-</p>
+      <hr>
+      <!-- Preview Image -->
+      <%= image_tag(@casestudy.image,  alt: "Edit Entry", class:"card-img-top", size: "500x300" )%>
 
-<p>
-  <strong>Category:</strong>
-  <%= @casestudy.category_id %>
-</p>
+      <div class="card-footer text-black">
+        <%= @casestudy.user.surname %> <%= @casestudy.user.name %>
+        <%= @casestudy.created_at.to_s(:short) %>
+        <strong class="text-primary"><%= @casestudy.category.tag %></strong>
+        <%= render_shareable :static_link => true %>
 
-<%= link_to 'Edit', edit_casestudy_path(@casestudy) %> |
-<%= link_to 'Back', casestudies_path %>
+        <% if current_user %>
+          <td><%= link_to 'Edit', edit_casestudy_path(@casestudy) %></td>
+          <td><%= link_to 'Destroy', @casestudy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% else %>
+          <!--          <td><%#= link_to 'Show', post %></td>-->
+        <% end %>
+      </div>
+
+      <hr>
+
+      <%= sanitize  @casestudy.description %>
+      <hr>
+
+
+    </div>
+
+    <div class="col-md-3">
+      <br> <br>
+      <br> <br>
+      <br> <br>
+      <%= render 'layouts/search' %>
+
+      <%= render 'layouts/latestPost' %>
+
+    </div>
+
+  </div>
+</div>
