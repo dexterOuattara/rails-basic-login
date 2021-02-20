@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :casestudies
   resources :categories
   resources :posts
   get 'pages/casestudies'
