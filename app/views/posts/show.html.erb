@@ -5,14 +5,14 @@
     <!-- Post Content Column -->
     <div class="col-md-9">
       <!-- Title -->
-      <h1 class="mt-4"><%= @post.title %></h1>
+      <h1 class="mt-4 titlePost"><%= @post.title %></h1>
       <hr>
       <!-- Preview Image -->
       <%= image_tag(@post.image, alt: "Edit Entry", class: "card-img-top") %>
       <div class="card-footer text-black">
-        <%= @post.user.surname %> <%= @post.user.name %>
+        <%= @post.user.surname %> <%= @post.user.name %> |
         <%= @post.created_at.to_s(:short) %>
-        <strong class="text-primary"><%= @post.category.tag %></strong>
+        <strong class="text-primary category"><%= @post.category.tag %></strong>
         <%= render_shareable :static_link => true %>
 
         <% if current_user %>
