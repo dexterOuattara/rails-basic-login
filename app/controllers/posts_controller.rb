@@ -10,7 +10,6 @@ class PostsController < ApplicationController
 
     @q = Post.ransack(params[:q])
 
-
     cate = params[:cate]
 
     if !cate.nil?
@@ -20,7 +19,6 @@ class PostsController < ApplicationController
       @posts = @q.result(distinct: true)
 
     end
-
 
   end
 
@@ -84,15 +82,15 @@ class PostsController < ApplicationController
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.friendly.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def post_params
-      params.require(:post).permit(:title, :description, :image , :user_id, :category_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+    @post = Post.friendly.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def post_params
+    params.require(:post).permit(:title, :description, :image, :user_id, :category_id)
+  end
 end

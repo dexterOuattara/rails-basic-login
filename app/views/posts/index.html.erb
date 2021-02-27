@@ -1,99 +1,63 @@
 <br><br>
-
-<%= link_to 'New Post', new_post_path %>
-
-
-
-
 <div class="container">
   <div class="row align-items-start">
-
     <div class="col-md-9">
       <div class="row">
-
         <% if @posts.any? %>
-
-
-
-      <% @posts.each do |post| %>
-
-      <div class="col-md-6">
-          <div class="card">
-            <%= link_to image_tag(post.image,  alt: "Edit Entry", class:"card-img-top", size: "300x200" ) , post %>
-
-            <div class="card-body">
-
-              <p class="card-text">
-                <%= post.category.tag %>
-                <br>
-                <%= post.title %>
-              </p>
+          <% @posts.each do |post| %>
+            <div class="col-xs-12 col-md-6 col-lg-6 customizeCard">
+              <div class="card">
+                <%= link_to image_tag(post.image, alt: "Edit Entry", class: "card-img-top", size: "300x200"), post %>
+                <div class="card-footer transparent">
+                  <strong class="card-text category">
+                    <span class="badge bg-primary"><%= post.category.tag %></span>
+                  </strong>
+                  <br>
+                  <strong class="card-text title">
+                    <%= truncate(post.title, length: 50) %>
+                  </strong>
+                  <br>
+                  <strong class="author">
+                    <%= post.user.surname %> <%= post.user.name %> |
+                    <%= post.created_at.to_s(:short) %>
+                    <% if current_user %>
+                      <td><%= link_to 'New Post', new_post_path %></td>
+                      <td><%= link_to 'Edit', edit_post_path(post) %></td>
+                      <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    <% else %>
+                      <td><%= link_to 'Show', post %></td>
+                    <% end %>
+                  </strong>
+                </div>
+              </div>
             </div>
-            <div class="card-footer text-black">
-
-            <strong> <%= post.user.surname %> <%= post.user.name %>
-              <%= post.created_at.to_s(:short) %>
-              <% if current_user %>
-                <td><%= link_to 'Edit', edit_post_path(post) %></td>
-                <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              <% else %>
-                <td><%= link_to 'Show', post %></td>
-
-              <% end %>
-            </strong>
-
-            </div>
-          </div>
-        </div>
-
-        <% end %>
+          <% end %>
         <% else %>
-
           <p class="text-center">
             There are no record for your request! <br>
-            <%= image_tag("nocontent22.jpg", :alt => "no content", size:"00x400") %>
+            <%= image_tag("nocontent22.jpg", :alt => "no content", size: "00x400") %>
           </p>
-
         <% end %>
       </div>
     </div>
-
-
-
-
-
-
-
-
     <div class="col-md-3">
       <%= render 'layouts/search' %>
       <div class="card-header">
         Categories
       </div>
-
       <div class="card-body">
-
         <ul class="list-group">
-
           <% @categories.each do |category| %>
-
-
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <%= link_to category.tag, posts_path(:cate => category.id) %>
-
               <span class="badge badge-primary badge-pill text-primary"><%= category.posts.count %></span>
             </li>
           <% end %>
-
-
         </ul>
       </div>
-
-    </div>
-
-  </div>
     </div>
   </div>
 </div>
-
+</div>
+</div>
 </div>

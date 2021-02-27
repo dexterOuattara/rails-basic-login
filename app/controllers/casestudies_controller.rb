@@ -47,7 +47,6 @@ class CasestudiesController < ApplicationController
     @casestudy = Casestudy.new(casestudy_params)
     @casestudy.user = current_user
 
-
     respond_to do |format|
       if @casestudy.save
         format.html { redirect_to @casestudy, notice: "Casestudy was successfully created." }
@@ -82,13 +81,14 @@ class CasestudiesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_casestudy
-      @casestudy = Casestudy.friendly.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def casestudy_params
-      params.require(:casestudy).permit(:title, :description , :image, :user_id, :category_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_casestudy
+    @casestudy = Casestudy.friendly.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def casestudy_params
+    params.require(:casestudy).permit(:title, :description, :image, :user_id, :category_id)
+  end
 end

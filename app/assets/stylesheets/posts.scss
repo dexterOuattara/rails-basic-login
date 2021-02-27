@@ -307,3 +307,29 @@ body {
   min-height: 100vh;
   background-color: #fafafa;
 }
+
+
+.category {
+  text-transform: uppercase;
+  color: #0d6efd;
+  font-weight: bold;
+}
+
+.title {
+  text-transform: uppercase;
+  color: white;
+  font-weight: bold;
+}
+
+.author {
+  color: white;
+  font-weight: bold;
+}
+
+.transparent {
+  background-color: rgba(0, 0, 0, 0.8)
+}
+
+.customizeCard {
+  padding-bottom: 20px;
+}
