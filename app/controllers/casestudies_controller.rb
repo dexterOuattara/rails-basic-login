@@ -89,6 +89,6 @@ class CasestudiesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def casestudy_params
-    params.require(:casestudy).permit(:title, :description, :image, :user_id, :category_id)
+    params.require(:casestudy).permit(:title, :description, :image, :user_id, :casecategory_id)
   end
 end
