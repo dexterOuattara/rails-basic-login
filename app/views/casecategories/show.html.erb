@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @casecategory.tag %>
+</p>
+
+<p>
+  <strong>Caption:</strong>
+  <%= @casecategory.caption %>
+</p>
+
+<%= link_to 'Edit', edit_casecategory_path(@casecategory) %> |
+<%= link_to 'Back', casecategories_path %>

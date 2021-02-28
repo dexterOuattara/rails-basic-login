@@ -4,21 +4,21 @@ class CasestudiesController < ApplicationController
 
   # GET /casestudies or /casestudies.json
   def index
+    @casecategories = Casecategory.all
+
     @casestudies = Casestudy.all
 
-    @categories = Category.all
+    @q = Casestudy.ransack(params[:q])
 
-    #
-    # cate = params[:cate]
-    #
-    # if !cate.nil?
-    #   @casestudies = Casestudy.where(:category_id => cate)
-    # else
-    #
-    #   @casestudies = @q.result(distinct: true)
-    #
-    # end
+    cate = params[:cate]
 
+    if !cate.nil?
+      @casestudies = Casestudy.where(:casecategory_id => cate)
+    else
+
+      @casestudies = @q.result(distinct: true)
+
+    end
   end
 
   # GET /casestudies/1 or /casestudies/1.json
@@ -32,13 +32,13 @@ class CasestudiesController < ApplicationController
   # GET /casestudies/new
   def new
     @casestudy = Casestudy.new
-    @categories = Category.all
+    @casecategories = Casecategory.all
 
   end
 
   # GET /casestudies/1/edit
   def edit
-    @categories = Category.all
+    @casecategories = Casecategory.all
 
   end
 

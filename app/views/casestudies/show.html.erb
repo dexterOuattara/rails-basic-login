@@ -16,7 +16,7 @@
       <div class="card-footer text-black">
         <%= @casestudy.user.surname %> <%= @casestudy.user.name %>
         <%= @casestudy.created_at.to_s(:short) %>
-        <strong class="text-primary"><%= @casestudy.category.tag %></strong>
+<!--        <strong class="text-primary"><%#= @casestudy.casecategory.tag %></strong>-->
         <%= render_shareable :static_link => true %>
 
         <% if current_user %>
@@ -41,7 +41,7 @@
       <br> <br>
       <%= render 'layouts/search' %>
 
-      <%= render 'layouts/latestCase' %>
+      <%#= render 'layouts/latestCase' %>
 
     </div>
 

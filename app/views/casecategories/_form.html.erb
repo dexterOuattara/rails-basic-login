@@ -1,0 +1,27 @@
+<%= form_with(model: casecategory) do |form| %>
+  <% if casecategory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(casecategory.errors.count, "error") %> prohibited this casecategory from being saved:</h2>
+
+      <ul>
+        <% casecategory.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :tag %>
+    <%= form.text_field :tag %>
+  </div>
+
+  <div class="field">
+    <%= form.label :caption %>
+    <%= form.text_area :caption %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
