@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_28_105201) do
+ActiveRecord::Schema.define(version: 2021_03_06_223533) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -77,6 +77,24 @@ ActiveRecord::Schema.define(version: 2021_02_28_105201) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "interviewcategories", force: :cascade do |t|
+    t.string "tag"
+    t.text "caption"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "interviews", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "user_id", null: false
+    t.integer "interviewcategory_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["interviewcategory_id"], name: "index_interviews_on_interviewcategory_id"
+    t.index ["user_id"], name: "index_interviews_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -109,6 +127,8 @@ ActiveRecord::Schema.define(version: 2021_02_28_105201) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "casestudies", "categories", column: "casecategory_id"
   add_foreign_key "casestudies", "users"
+  add_foreign_key "interviews", "interviewcategories"
+  add_foreign_key "interviews", "users"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "users"
 end

@@ -1,0 +1,2 @@
+module InterviewcategoriesHelper
+end

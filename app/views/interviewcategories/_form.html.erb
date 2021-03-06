@@ -1,0 +1,27 @@
+<%= form_with(model: interviewcategory) do |form| %>
+  <% if interviewcategory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(interviewcategory.errors.count, "error") %> prohibited this interviewcategory from being saved:</h2>
+
+      <ul>
+        <% interviewcategory.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :tag %>
+    <%= form.text_field :tag %>
+  </div>
+
+  <div class="field">
+    <%= form.label :caption %>
+    <%= form.text_area :caption %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

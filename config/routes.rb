@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :interviews
+  resources :interviewcategories
   resources :casecategories
   resources :casestudies
   resources :categories
