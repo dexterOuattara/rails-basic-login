@@ -21,14 +21,18 @@
     <%= form.text_area :description %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
+<!--  <div class="field">-->
+    <%#= form.label :user_id %>
+    <%#= form.text_field :user_id %>
+<!--  </div>-->
 
   <div class="field">
-    <%= form.label :interviewcategory_id %>
-    <%= form.text_field :interviewcategory_id %>
+    <select name="interview[interviewcategory_id]" id="interviewcategory_id">
+      <% @interviewcategories.each do |interviewcategory| %>
+        <option value="<%= interviewcategory.id %>"><%= interviewcategory.tag %></option>
+      <% end %>
+    </select>
+
   </div>
 
   <div class="actions">

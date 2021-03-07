@@ -1,9 +1,11 @@
 class InterviewsController < ApplicationController
   before_action :set_interview, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /interviews or /interviews.json
   def index
     @interviews = Interview.all
+
   end
 
   # GET /interviews/1 or /interviews/1.json
@@ -13,6 +15,7 @@ class InterviewsController < ApplicationController
   # GET /interviews/new
   def new
     @interview = Interview.new
+    @interviewcategories = Interviewcategory.all
   end
 
   # GET /interviews/1/edit
@@ -22,6 +25,7 @@ class InterviewsController < ApplicationController
   # POST /interviews or /interviews.json
   def create
     @interview = Interview.new(interview_params)
+    @interview.user = current_user
 
     respond_to do |format|
       if @interview.save
