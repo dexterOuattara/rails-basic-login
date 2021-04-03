@@ -17,7 +17,7 @@
                 <%= link_to image_tag(casestudy.image, alt: "Edit Entry", class: "card-img-top", size: "300x200"), casestudy %>
                 <div class="card-footer transparent">
                   <strong class="card-text category">
-                                        <span class="badge bg-primary"><%= casestudy.casecategory.tag %></span>
+                    <span class="badge bg-primary"><%= casestudy.casecategory.tag %></span>
                   </strong>
                   <br>
                   <strong class="card-text title">
@@ -55,6 +55,8 @@
 
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <%= link_to casecategory.tag, casestudies_path(:cate => casecategory.id) %>
+              <span class="badge bg-secondary"><%= casecategory.casestudies.count %></span>
+
             </li>
           <% end %>
 

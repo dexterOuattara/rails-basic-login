@@ -4,12 +4,31 @@ class InterviewsController < ApplicationController
 
   # GET /interviews or /interviews.json
   def index
+    @interviewcategories = Interviewcategory.all
     @interviews = Interview.all
+
+    @q = Interview.ransack(params[:q])
+
+    cate = params[:cate]
+
+    if !cate.nil?
+      @interviews = Interview.where(:interviewcategory_id => cate)
+    else
+
+      @interviews = @q.result(distinct: true)
+
+    end
 
   end
 
+
   # GET /interviews/1 or /interviews/1.json
   def show
+    @interviews = Interview.all
+
+    @q = Interview.ransack(params[:q])
+    @interviews = @q.result(distinct: true)
+
   end
 
   # GET /interviews/new
@@ -20,6 +39,9 @@ class InterviewsController < ApplicationController
 
   # GET /interviews/1/edit
   def edit
+
+    @interviewcategories = Interviewcategory.all
+
   end
 
   # POST /interviews or /interviews.json
@@ -63,11 +85,11 @@ class InterviewsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_interview
-      @interview = Interview.find(params[:id])
+      @interview = Interview.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def interview_params
-      params.require(:interview).permit(:title, :description, :user_id, :interviewcategory_id)
+      params.require(:interview).permit(:title, :description, :image, :user_id, :interviewcategory_id)
     end
 end

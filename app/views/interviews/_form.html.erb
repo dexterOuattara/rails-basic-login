@@ -1,3 +1,13 @@
+<script src="https://cdn.tiny.cloud/1/przgmzfaioiisrc6rjnssfkp36q9iscbyi8az9573ti8fztu/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+        toolbar_mode: 'floating',
+    });
+</script>
+
 <%= form_with(model: interview) do |form| %>
   <% if interview.errors.any? %>
     <div id="error_explanation">
@@ -21,7 +31,13 @@
     <%= form.text_area :description %>
   </div>
 
-<!--  <div class="field">-->
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
+
+  <!--  <div class="field">-->
     <%#= form.label :user_id %>
     <%#= form.text_field :user_id %>
 <!--  </div>-->

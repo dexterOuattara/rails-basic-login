@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2021_03_06_223533) do
   create_table "interviews", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.string "slug"
     t.integer "user_id", null: false
     t.integer "interviewcategory_id", null: false
     t.datetime "created_at", precision: 6, null: false

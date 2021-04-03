@@ -1,24 +1,50 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @interview.title %>
-</p>
+<!-- Page Content -->
+<div class="container">
 
-<p>
-  <strong>Description:</strong>
-  <%= @interview.description %>
-</p>
+  <div class="row">
 
-<p>
-  <strong>User:</strong>
-  <%= @interview.user_id %>
-</p>
+    <!-- Post Content Column -->
+    <div class="col-md-9">
 
-<p>
-  <strong>Interviewcategory:</strong>
-  <%= @interview.interviewcategory_id %>
-</p>
+      <!-- Title -->
+      <h1 class="mt-4"><%= @interview.title %></h1>
 
-<%= link_to 'Edit', edit_interview_path(@interview) %> |
-<%= link_to 'Back', interviews_path %>
+      <hr>
+      <!-- Preview Image -->
+      <%= image_tag(@interview.image,  alt: "Edit Entry", class:"card-img-top", size: "500x300" )%>
+
+      <div class="card-footer text-black">
+        <%= @interview.user.surname %> <%= @interview.user.name %>
+        <%= @interview.created_at.to_s(:short) %>
+        <!--        <strong class="text-primary"><%#= @casestudy.casecategory.tag %></strong>-->
+        <%= render_shareable :static_link => true %>
+
+        <% if current_user %>
+          <td><%= link_to 'Edit', edit_interview_path(@interview) %></td>
+          <td><%= link_to 'Destroy', @interview, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% else %>
+          <!--          <td><%#= link_to 'Show', post %></td>-->
+        <% end %>
+      </div>
+
+      <hr>
+
+      <%= sanitize  @interview.description %>
+      <hr>
+
+    </div>
+
+    <div class="col-md-3">
+      <br> <br>
+      <br> <br>
+      <br> <br>
+      <%= render 'layouts/search' %>
+
+      <%#= render 'layouts/latestCase' %>
+
+    </div>
+
+  </div>
+</div>

@@ -21,6 +21,8 @@ class CasestudiesController < ApplicationController
     end
   end
 
+
+
   # GET /casestudies/1 or /casestudies/1.json
   def show
     @casestudies = Casestudy.all
