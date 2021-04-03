@@ -10,7 +10,9 @@
                 <%= link_to image_tag(post.image, alt: "Edit Entry", class: "card-img-top", size: "300x200"), post %>
                 <div class="card-footer transparent">
                   <strong class="card-text category">
-                    <span class="badge bg-primary"><%= post.category.tag %></span>
+                    <span class="badge bg-primary">
+                      <%= link_to post.category.tag, posts_path(:cate => post.category.id) %>
+                    </span>
                   </strong>
                   <br>
                   <strong class="card-text title">

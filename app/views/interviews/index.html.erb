@@ -22,12 +22,15 @@
 
           <% @interviews.each do |interview| %>
 
-            <div class="col-xs-12 col-md-6 col-lg-6 customizeCard">
+            <div class="col-xs-12 col-md-4 col-lg-4 customizeCard">
               <div class="card">
                 <%= link_to image_tag(interview.image, alt: "Edit Entry", class: "card-img-top", size: "300x200"), interview %>
                 <div class="card-footer transparent">
                   <strong class="card-text category">
-                    <span class="badge bg-primary"><%= interview.interviewcategory.tag %></span>
+                    <span class="badge bg-primary">
+                    <%= link_to interview.interviewcategory.tag, interviews_path(:cate => interview.interviewcategory.id) %>
+                    </span>
+
                   </strong>
                   <br>
                   <strong class="card-text title">
