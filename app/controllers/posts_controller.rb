@@ -2,18 +2,18 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_post, only: %i[ show edit update destroy ]
 
-  # GET /posts or /posts.json
+
   def index
-    @categories = Category.all
+    @articles = Post.select(:category_id).distinct
 
-    @posts = Post.where(status: 'true')
+    @posts = Post.all
 
-    @q = Post.where(status: 'true').ransack(params[:q])
+      @q = Post.where(status: 'true').ransack(params[:q])
 
     cate = params[:cate]
 
     if !cate.nil?
-      @posts = Post.where(category_id: cate)
+      @posts = Post.where( status: 'true', :category_id => cate)
     else
 
       @posts = @q.result(distinct: true)
